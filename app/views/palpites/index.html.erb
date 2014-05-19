@@ -1,0 +1,96 @@
+<h1>Listing palpites</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Usuario</th>
+      <th>Jogo</th>
+      <th>Gols a</th>
+      <th>Gols b</th>
+      <th>Pontos</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @palpites.each do |palpite| %>
+      <tr>
+        <td><%= palpite.usuario.nome %></td>
+        <td><%= palpite.jogo_id %></td>
+        <td><%= palpite.gols_a %></td>
+        <td><%= palpite.gols_b %></td>
+        <td><%= palpite.pontos %></td>
+        <td><%= link_to 'Show', palpite %></td>
+        <td><%= link_to 'Edit', edit_palpite_path(palpite) %></td>
+        <td><%= link_to 'Destroy', palpite, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<br>
+Salvar Palpites:
+<br>
+<%= form_tag palpites_path do |f| %>
+  <ul>
+    <% @palpites.each do |palpite| %>
+      <%= fields_for 'palpite[]', palpite do |p_fields| %>
+      <li>
+        <%= p_fields.hidden_field 'id' %>
+
+	    <%= p_fields.hidden_field 'jogo_id' %>
+
+	    <%= p_fields.hidden_field 'usuario_id' %>
+	
+        <%= p_fields.label :jogo_id %>
+        <%= palpite.jogo_id %>
+        
+        <%= p_fields.label :gols_a %>
+        <%= p_fields.number_field :gols_a %>
+
+        <%= p_fields.label :gols_b %>
+        <%= p_fields.number_field :gols_b %>
+        
+        <%= palpite.pontos %>
+      </li>
+      <% end %>
+    <% end %>
+
+  </ul>
+
+  <p><%= submit_tag "Submit" %></p>
+<% end %>
+
+
+<br>
+<br>
+
+<table>
+  <thead>
+    <tr>
+      <th>Jogo</th>
+      <th>Time a</th>
+      <th>Gols a</th>
+      <th> _ Gols b</th>
+      <th>Time b</th>
+      <th>Pontos</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @jogos.each do |jogo| %>
+      <tr>
+        <td><%= jogo.id %></td>
+        <td><%= jogo.time_a %></td>
+        <td><%= jogo.gols_a %></td>
+        <td> X <%= jogo.gols_b %></td>
+        <td><%= jogo.time_b %></td>
+       
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<%= link_to 'New Palpite', new_palpite_path %>

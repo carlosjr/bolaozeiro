@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Time a:</strong>
+  <%= @jogo.time_a %>
+</p>
+
+<p>
+  <strong>Time b:</strong>
+  <%= @jogo.time_b %>
+</p>
+
+<p>
+  <strong>Gols a:</strong>
+  <%= @jogo.gols_a %>
+</p>
+
+<p>
+  <strong>Gols b:</strong>
+  <%= @jogo.gols_b %>
+</p>
+
+<p>
+  <strong>Data:</strong>
+  <%= @jogo.data %>
+</p>
+
+<p>
+  <strong>Hora:</strong>
+  <%= @jogo.hora %>
+</p>
+
+<%= link_to "Novo Palpite", controller: "palpites",
+                                 action: "new",
+                                 jogo: @jogo %>
+
+<%= link_to 'Edit', edit_jogo_path(@jogo) %> |
+<%= link_to 'Back', jogos_path %>

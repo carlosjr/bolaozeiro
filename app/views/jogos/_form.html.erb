@@ -1,0 +1,41 @@
+<%= form_for(@jogo) do |f| %>
+  <% if @jogo.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@jogo.errors.count, "error") %> prohibited this jogo from being saved:</h2>
+
+      <ul>
+      <% @jogo.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :time_a %><br>
+    <%= f.text_field :time_a %>
+  </div>
+  <div class="field">
+    <%= f.label :time_b %><br>
+    <%= f.text_field :time_b %>
+  </div>
+  <div class="field">
+    <%= f.label :gols_a %><br>
+    <%= f.number_field :gols_a %>
+  </div>
+  <div class="field">
+    <%= f.label :gols_b %><br>
+    <%= f.number_field :gols_b %>
+  </div>
+  <div class="field">
+    <%= f.label :data %><br>
+    <%= f.text_field :data %>
+  </div>
+  <div class="field">
+    <%= f.label :hora %><br>
+    <%= f.text_field :hora %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

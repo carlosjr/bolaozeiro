@@ -1,0 +1,76 @@
+<%= form_for @jogo do |f| %>  
+  
+  <p>  
+    <%= f.label :id %><br />  
+    <%= f.text_field :id %>  
+  </p>  
+
+  <%= f.fields_for @palpites do |builder| %>  
+    <p>  
+      <%= builder.label :gols_a, "Time a" %><br />  
+      <%= builder.number_field :gols_a %>  
+    </p>  
+    <p>  
+      <%= builder.label :gols_b, "Time b" %><br />  
+      <%= builder.number_field :gols_b %>  
+    </p>
+  <% end %>  
+  <p><%= f.submit "Submit" %></p>  
+<% end %> 
+
+
+
+
+
+<% if false %>
+
+
+<%= form_for(@palpite) do |f| %>
+  <% if @palpite.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@palpite.errors.count, "error") %> prohibited this palpite from being saved:</h2>
+
+      <ul>
+      <% @palpite.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <% if @palpite.jogo %>
+    <%= f.hidden_field 'jogo_id' %>
+  <% else %>
+    <div class="field">
+      <%= f.label :jogo_id %><br>
+      <%= f.number_field :jogo_id %>
+    </div>
+  <% end %>
+  
+  <% if @palpite.usuario %>
+    <%= f.hidden_field 'usuario_id' %>
+  <% else %>
+    <div class="field">
+      <%= f.label :usuario_id %><br>
+      <%= f.number_field :usuario_id %>
+    </div>
+  <% end %>
+  
+  <div class="field">
+    <%= f.label :gols_a %><br>
+    <%= f.number_field :gols_a %>
+  </div>
+  <div class="field">
+    <%= f.label :gols_b %><br>
+    <%= f.number_field :gols_b %>
+  </div>
+  <div class="field">
+    <%= f.label :pontos %><br>
+    <%= f.number_field :pontos %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+<% end %>
